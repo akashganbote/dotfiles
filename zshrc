@@ -118,6 +118,10 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias h="unset HISTFILE"
 alias allupdate="sudo apt-get update && sudo apt-fast upgrade -y && sudo apt-fast dist-upgrade -y"
+function_ytdl () {
+	youtube-dl --external-downloader aria2c --external-downloader-args -x10 $1 && notify-send -t 3 "youtube-dl: Done" || notify-send -t 3 "youtube-dl: Error"
+}
+alias ytdl=function_ytdl
 function_sp () {
     curl -F "sprunge=@${1:--}" http://sprunge.us
 }
